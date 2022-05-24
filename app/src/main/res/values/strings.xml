@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">OLX</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="olx">Olx</string>
+    <string name="india">India</string>
+    <string name="india_s_leading_marketplace">India\'s Leading\nMarketplace</string>
+    <string name="contnue_with_google">Contnue With Google</string>
+    <string name="continue_with_facebook">Continue With Facebook</string>
+    <string name="if_you_are_accepting_olx_terms_and_conditions_and_privacy_policy">If you are accepting\nOLX Terms and Conditions and Privacy Policy</string>
+    <string name="test_screen_after_login">Test Screen after login</string>
+
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+    <string name="find_cars_mobiles_and_more">Find Cars, Mobiles, and More</string>
+    <string name="browse_categories">Browse Categories</string>
+    <string name="sell" />
+    <string name="what_are_you_offering">What are you Offering ?</string>
+
+
+</resources>

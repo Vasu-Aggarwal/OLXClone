@@ -4,16 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Apps/OLX/app/src/main/res/drawable/box.xml" value="0.1185" />
+        <entry key="..\:/Apps/OLX/app/src/main/res/drawable/dash_box.xml" value="0.11" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/activity_login.xml" value="0.16574074074074074" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/activity_splash.xml" value="0.25052083333333336" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/activity_testing.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/adapter_categories.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/adapter_sell.xml" value="0.17552083333333332" />
+        <entry key="..\:/Apps/OLX/app/src/main/res/layout/dialog_progressbar.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/fragment_dashboard.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Apps/OLX/app/src/main/res/layout/fragment_include_details.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/fragment_notifications.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/layout/fragment_sell.xml" value="0.17552083333333332" />
+        <entry key="..\:/Apps/OLX/app/src/main/res/layout/fragment_upload_photo.xml" value="0.17552083333333332" />
         <entry key="..\:/Apps/OLX/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17552083333333332" />
       </map>
     </option>

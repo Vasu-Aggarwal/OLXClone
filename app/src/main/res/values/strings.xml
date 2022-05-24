@@ -18,6 +18,25 @@
     <string name="browse_categories">Browse Categories</string>
     <string name="sell" />
     <string name="what_are_you_offering">What are you Offering ?</string>
+    <string name="brand">Brand</string>
+    <string name="year">Year</string>
+    <string name="km_driven">KM Driven</string>
+    <string name="ad_title">Ad Title</string>
+    <string name="mention_the_key_features_of_the_item">Mention the key features of the item</string>
+    <string name="describe_what_you_are_selling">Describe what you are selling</string>
+    <string name="include_conditions_and_reason_for_selling">Include Conditions and reason for selling</string>
+    <string name="price">Price</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="required_fields">*Required Fields</string>
+    <string name="next">Next</string>
+    <string name="enter_brand_name">Enter Brand Name</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="upload_upto_5_photos">Upload upto 5 Photos</string>
+    <string name="preview">Preview</string>
+    <string name="upload">Upload</string>
 
 
 </resources>

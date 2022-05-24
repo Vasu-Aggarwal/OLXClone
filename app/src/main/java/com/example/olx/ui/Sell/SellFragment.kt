@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.olx.R
+import com.example.olx.baseFragment
 import com.example.olx.databinding.FragmentSellBinding
 import com.example.olx.model.CategoriesModel
 import com.example.olx.ui.home.adapter.sellAdapter
@@ -13,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_sell.*
 
-class SellFragment : Fragment(), sellAdapter.ItemClickListener {
+class SellFragment : baseFragment(), sellAdapter.ItemClickListener {
 
     private lateinit var categoriesModel: MutableList<CategoriesModel>
     private var _binding: FragmentSellBinding? = null
@@ -39,7 +42,9 @@ class SellFragment : Fragment(), sellAdapter.ItemClickListener {
     }
 
     private fun getCategoryList() {
+        showProgressBar()
         db.collection("Categories").get().addOnSuccessListener {
+            hideProgressBar()
             categoriesModel = it.toObjects(CategoriesModel::class.java)
             setAdapter()
         }
@@ -52,5 +57,8 @@ class SellFragment : Fragment(), sellAdapter.ItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
+        val bundle = Bundle()
+        bundle.putString("key", categoriesModel.get(position).key)
+        findNavController().navigate(R.id.action_sell_to_include_details, bundle)
     }
 }

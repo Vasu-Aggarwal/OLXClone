@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.olx.baseFragment
 import com.example.olx.databinding.FragmentHomeBinding
 import com.example.olx.model.CategoriesModel
 import com.example.olx.ui.home.adapter.CategoriesAdapter
@@ -18,7 +19,7 @@ import com.example.olx.utilities.SharedPref
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment(), sellAdapter.ItemClickListener {
+class HomeFragment : baseFragment(), sellAdapter.ItemClickListener {
 
 //    private lateinit var sellAdapter: sellAdapter
     private lateinit var categoriesAdapter: CategoriesAdapter
@@ -78,8 +79,9 @@ class HomeFragment : Fragment(), sellAdapter.ItemClickListener {
     }
 
     private fun getCategoryList() {
-        db.collection("Categories").get().addOnSuccessListener { it ->
-//            categoriesModel = it.toObjects(CategoriesModel::class.java)
+        showProgressBar()
+        db.collection("Categories").get().addOnSuccessListener {
+            hideProgressBar()
             categoriesModel = it.toObjects(CategoriesModel::class.java)
             setAdapter()
         }

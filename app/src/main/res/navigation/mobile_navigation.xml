@@ -15,11 +15,36 @@
         android:id="@+id/navigation_sell"
         android:name="com.example.olx.ui.Sell.SellFragment"
         android:label="@string/sell"
-        tools:layout="@layout/fragment_sell" />
+        tools:layout="@layout/fragment_sell">
+
+        <action
+            android:id="@+id/action_sell_to_include_details"
+            app:destination="@+id/navigation_include_details"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_enter_anim"
+            app:popUpToInclusive="false"/>
+
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.olx.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_include_details"
+        android:name="com.example.olx.ui.includeDetails.IncludeDetailsFragment"
+        android:label="Include Details"
+        tools:layout="@layout/fragment_include_details">
+
+        <action
+            android:id="@+id/action_details_to_upload_photo"
+            app:destination="@+id/navigation_upload_photo"
+            app:popUpTo="@id/navigation_upload_photo"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_enter_anim"
+            app:popUpToInclusive="false"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_upload_photo"
+        android:name="com.example.olx.ui.uploadPhoto.UploadPhotoFragment"
+        android:label="Upload Photo"
+        tools:layout="@layout/fragment_upload_photo" />
 </navigation>

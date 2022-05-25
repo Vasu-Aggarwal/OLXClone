@@ -37,6 +37,10 @@
     <string name="upload_upto_5_photos">Upload upto 5 Photos</string>
     <string name="preview">Preview</string>
     <string name="upload">Upload</string>
+    <string name="select_source">Select Source</string>
+    <string name="photo_gallery">Photo Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="cancel">Cancel</string>
 
 
 </resources>

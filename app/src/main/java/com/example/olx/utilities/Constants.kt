@@ -2,6 +2,7 @@ package com.example.olx.utilities
 
 object Constants {
 
+    val CREATED_DATE = "created_date"
     val CITY_NAME = "city_name"
     val USER_PHOTO = "user_photo"
     val USER_NAME = "user_name"

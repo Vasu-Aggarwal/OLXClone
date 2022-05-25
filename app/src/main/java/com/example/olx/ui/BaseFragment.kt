@@ -1,8 +1,9 @@
-package com.example.olx
+package com.example.olx.ui
 
 import android.app.Dialog
 import android.view.Window
 import androidx.fragment.app.Fragment
+import com.example.olx.R
 
 open class baseFragment: Fragment() {
 

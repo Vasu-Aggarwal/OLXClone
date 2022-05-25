@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.olx.baseFragment
+import com.example.olx.ui.baseFragment
 import com.example.olx.databinding.FragmentHomeBinding
 import com.example.olx.model.CategoriesModel
 import com.example.olx.ui.home.adapter.CategoriesAdapter

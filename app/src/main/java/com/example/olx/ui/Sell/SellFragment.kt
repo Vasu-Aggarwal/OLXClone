@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.olx.R
-import com.example.olx.baseFragment
+import com.example.olx.ui.baseFragment
 import com.example.olx.databinding.FragmentSellBinding
 import com.example.olx.model.CategoriesModel
 import com.example.olx.ui.home.adapter.sellAdapter
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_sell.*
 
 class SellFragment : baseFragment(), sellAdapter.ItemClickListener {

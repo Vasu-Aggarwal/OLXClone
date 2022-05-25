@@ -41,6 +41,7 @@
     <string name="photo_gallery">Photo Gallery</string>
     <string name="camera">Camera</string>
     <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
 
 
 </resources>

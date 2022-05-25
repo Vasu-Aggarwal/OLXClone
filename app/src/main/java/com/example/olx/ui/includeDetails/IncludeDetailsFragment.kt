@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.olx.R
-import com.example.olx.baseFragment
+import com.example.olx.ui.baseFragment
 import com.example.olx.utilities.Constants
 import kotlinx.android.synthetic.main.fragment_include_details.*
 

@@ -34,6 +34,7 @@ class UploadImagesAdapter(internal var activity: Activity, internal var imageArr
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(position<imageArrayList.size){
+
             val bitmap = BitmapFactory.decodeFile(imageArrayList[position])
             holder.imageView.setImageBitmap(bitmap)
         }

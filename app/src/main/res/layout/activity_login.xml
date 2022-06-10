@@ -71,39 +71,39 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_facebook"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/white"
-            android:layout_marginTop="28dp">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_facebook"-->
+<!--            android:layout_width="280dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:background="@color/white"-->
+<!--            android:layout_marginTop="28dp">-->
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src= "@drawable/facebook"
-                android:padding="4dp"/>
+<!--            <ImageView-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:src= "@drawable/facebook"-->
+<!--                android:padding="4dp"/>-->
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/continue_with_facebook"
-                android:background="@color/white"
-                android:layout_marginStart="20dp"
-                android:textAlignment="center"/>
+<!--&lt;!&ndash;            <androidx.appcompat.widget.AppCompatButton&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/continue_with_facebook"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:background="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginStart="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textAlignment="center"/>&ndash;&gt;-->
 
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp" />
+<!--            <com.facebook.login.widget.LoginButton-->
+<!--                android:id="@+id/login_button"-->
+<!--                android:visibility="gone"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_marginBottom="30dp" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"

@@ -4,9 +4,11 @@ import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.olx.MainActivity
 import com.example.olx.R
@@ -23,6 +25,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.fragment_upload_photo.*
+import net.alhazmy13.mediapicker.Image.ImagePicker
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -30,19 +33,19 @@ import kotlin.collections.ArrayList
 class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAdapter.ItemClickListener {
 
     private val imageUriList: ArrayList<String> = ArrayList()
+    private var imageUri: Uri? = null
     private var count: Int = 0
-    private lateinit var uplaodTask: UploadTask
+    private lateinit var uploadTask: UploadTask
     private var imagesAdapter: UploadImagesAdapter? = null
     private var selectedImagesArrayList: ArrayList<String> = ArrayList()
     private var outputFileUri: String? = null
     internal var dialog: BottomSheetDialog? = null
     internal var selectedImage: File? = null
-    internal var TAG = UploadPhotoFragment::class.java.simpleName
+    internal var file: File? = null
     val db = FirebaseFirestore.getInstance()
     internal lateinit var storageRef: StorageReference
     internal lateinit var imgRef: StorageReference
     internal lateinit var storage: FirebaseStorage
-
 
 
     override fun onCreateView(
@@ -71,7 +74,7 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
                 recyclerView.visibility = View.VISIBLE
 
                 val mpaths = bundle.getStringArrayList(Constants.IMAGE_PATHS)
-                
+
                 selectedImage = File(mpaths!![0])
                 outputFileUri = mpaths[0]
                 selectedImagesArrayList.add(mpaths[0])
@@ -99,19 +102,27 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
     override fun onClick(p0: View?) {
         when(p0?.id){
             R.id.imageViewChoosePhoto->{
-                showBottomSheetDialog()
+                if (selectedImagesArrayList.size > 4) {
+                    Toast.makeText(activity, "You already selected 5 photos", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    showBottomSheetDialog()
+                }
             }
 
             R.id.buttonPreview->{
                 if(selectedImage!=null){
-                    startActivity(Intent(activity, PreviewImageActivity::class.java)
-                        .putExtra("imageUri", outputFileUri))
+                    startActivity(Intent(activity, PreviewImageActivity::class.java).putExtra("imageUri", outputFileUri))
                 }
+                else
+                    Toast.makeText(activity, "Add Image First", Toast.LENGTH_SHORT).show()
             }
 
             R.id.buttonUpload->{
                 if(selectedImage==null || selectedImage!!.exists())
-                    Toast.makeText(activity!!, "Please select a Photo", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(activity!!, "Please select a Photo", Toast.LENGTH_SHORT).show()
+//                        saveFileInFirebaseStorage()
+                        postAd()
                 else
                     saveFileInFirebaseStorage()
             }
@@ -119,7 +130,7 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
     }
 
     private fun saveFileInFirebaseStorage() {
-        for(i in 0..selectedImagesArrayList.size+1){
+        for(i in 0..selectedImagesArrayList.size-1){
             val file = File(selectedImagesArrayList[i])
             uploadImage(file, file.name, i)
         }
@@ -128,9 +139,9 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
     private fun uploadImage(file: File, name: String, i: Int) {
         imgRef = storageRef.child("images/$name")
 
-        uplaodTask = imgRef.putFile(Uri.fromFile(file))
+        uploadTask = imgRef.putFile(imageUri!!)
 
-        uplaodTask.addOnSuccessListener (object: OnSuccessListener<UploadTask.TaskSnapshot> {
+        uploadTask.addOnSuccessListener (object: OnSuccessListener<UploadTask.TaskSnapshot> {
             override fun onSuccess(p0: UploadTask.TaskSnapshot?) {
                 imgRef.downloadUrl.addOnSuccessListener {
                     count++
@@ -172,10 +183,11 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
             Constants.ID to id
         )
         db.collection(arguments?.getString(Constants.KEY)!!)
-            .document(id.toString())
+            .document(id)
             .update(docData).addOnSuccessListener {
                 hideProgressBar()
                 Toast.makeText(activity!!, "Ad Posted Successfully", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_photo_to_my_ads)
             }
     }
 
@@ -185,7 +197,7 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
         dialog = BottomSheetDialog(activity!!)
         dialog?.setContentView(view)
         dialog?.window?.findViewById<View>(androidx.navigation.ui.R.id.design_bottom_sheet)
-            ?.setBackgroundColor(resources.getColor(android.R.color.white))
+            ?.setBackgroundColor(resources.getColor(android.R.color.transparent))
 
         var textviewGallery = dialog!!.findViewById<TextView>(R.id.textViewPhoto)
         var textviewCamera = dialog!!.findViewById<TextView>(R.id.textViewCamera)
@@ -197,12 +209,13 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
 
         textviewCamera?.setOnClickListener{
             dialog!!.dismiss()
-            chooseImage(net.alhazmy13.mediapicker.Image.ImagePicker.Mode.CAMERA)
+            chooseImage(ImagePicker.Mode.CAMERA)
         }
 
         textviewGallery?.setOnClickListener{
             dialog!!.dismiss()
-            chooseImage(net.alhazmy13.mediapicker.Image.ImagePicker.Mode.GALLERY)
+            chooseImage(ImagePicker.Mode.GALLERY)
+//            com.github.drjacky.imagepicker.ImagePicker.with(activity!!).galleryOnly()
         }
 
         dialog?.show()
@@ -214,12 +227,12 @@ class UploadPhotoFragment : baseFragment(), View.OnClickListener, UploadImagesAd
         window.attributes=lp
     }
 
-    private fun chooseImage(mode: net.alhazmy13.mediapicker.Image.ImagePicker.Mode){
-            net.alhazmy13.mediapicker.Image.ImagePicker.Builder(activity)
-            .mode(net.alhazmy13.mediapicker.Image.ImagePicker.Mode.CAMERA_AND_GALLERY)
-            .compressLevel(net.alhazmy13.mediapicker.Image.ImagePicker.ComperesLevel.MEDIUM)
-            .directory(net.alhazmy13.mediapicker.Image.ImagePicker.Directory.DEFAULT)
-            .extension(net.alhazmy13.mediapicker.Image.ImagePicker.Extension.PNG)
+    private fun chooseImage(mode: ImagePicker.Mode){
+            ImagePicker.Builder(activity)
+            .mode(mode)
+            .compressLevel(ImagePicker.ComperesLevel.MEDIUM)
+                .directory(ImagePicker.Directory.DEFAULT)
+            .extension(ImagePicker.Extension.JPG)
             .allowMultipleImages(false)
             .enableDebuggingMode(true)
             .build()

@@ -42,6 +42,15 @@
     <string name="camera">Camera</string>
     <string name="cancel">Cancel</string>
     <string name="close">Close</string>
-
+    <string name="_100_00">$100.00</string>
+    <string name="phase_1_mohali">Phase 1 Mohali</string>
+    <string name="samsung">Samsung</string>
+    <string name="_25_oct">25 Oct</string>
+    <string name="ads">Ads</string>
+    <string name="_100">100</string>
+    <string name="details">Details</string>
+    <string name="description">Description</string>
+    <string name="call">Call</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

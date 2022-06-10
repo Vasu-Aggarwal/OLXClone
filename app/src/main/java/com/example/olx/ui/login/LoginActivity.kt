@@ -37,7 +37,6 @@ import java.util.*
 
 class LoginActivity : BaseActivity(), View.OnClickListener{
 
-//    private var callbackManager: CallbackManager? = null
     private val RC_SIGN_IN: Int = 123
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
@@ -54,53 +53,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener{
 
         auth = Firebase.auth
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-//        ll_google.setOnClickListener { signIn() }
         signIn()
-//        FacebookSdk.sdkInitialize(getApplicationContext())
-
-//        login_button.setReadPermissions(Arrays.asList(EMAIL))
-//        callbackManager = CallbackManager.Factory.create()
-
-//        registerFbCallback()
     }
-
-//    private fun registerFbCallback() {
-//        LoginManager.getInstance().registerCallback(callbackManager,
-//            object: FacebookCallback<LoginResult> {
-//                override fun onSuccess(loginResult: LoginResult) {
-//                    // App code
-//                    handleFacebookAccess(loginResult.accessToken)
-//                }
-//
-//                override fun onCancel() {
-//                    // App code
-//                }
-//
-//                override fun onError(exception: FacebookException) {
-//                    // App code
-//                }
-//            })
-//    }
-
-//    private fun handleFacebookAccess(accessToken: AccessToken) {
-//        val credential = FacebookAuthProvider.getCredential(accessToken.token)
-//        auth.signInWithCredential(credential)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    // Sign in success, update UI with the signed-in user's information
-//                    Log.d(TAG, "signInWithCredential:success")
-//                    val user = auth.currentUser
-//                    Toast.makeText(this, user?.displayName, Toast.LENGTH_SHORT).show()
-//                    updateUI(user)
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-//                    Toast.makeText(baseContext, "Authentication failed.",
-//                        Toast.LENGTH_SHORT).show()
-//                    updateUI(null)
-//                }
-//            }
-//    }
 
     override fun onClick(v: View?) {
         when(v?.id){

@@ -3,8 +3,10 @@ package com.example.olx
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -33,7 +35,7 @@ class MainActivity : BaseActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_sell, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_sell, R.id.navigation_my_ads
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -46,11 +48,23 @@ class MainActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode== Activity.RESULT_OK){
+        if(resultCode == Activity.RESULT_OK && requestCode == ImagePicker.IMAGE_PICKER_REQUEST_CODE){
+
             val mPaths = data?.getStringArrayListExtra(ImagePicker.EXTRA_IMAGE_PATH)
             val bundle = Bundle()
             bundle.putStringArrayList(Constants.IMAGE_PATHS, mPaths)
             onActivityResultData.resultData(bundle)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home->{
+                onBackPressed()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

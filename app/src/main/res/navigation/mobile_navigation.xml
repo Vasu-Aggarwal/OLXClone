@@ -46,5 +46,38 @@
         android:id="@+id/navigation_upload_photo"
         android:name="com.example.olx.ui.uploadPhoto.UploadPhotoFragment"
         android:label="Upload Photo"
-        tools:layout="@layout/fragment_upload_photo" />
+        tools:layout="@layout/fragment_upload_photo">
+
+        <action
+            android:id="@+id/action_photo_to_my_ads"
+            app:destination="@+id/navigation_my_ads"
+            app:popUpTo="@id/navigation_upload_photo"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_enter_anim"
+            app:popUpToInclusive="false"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_my_ads"
+        android:name="com.example.olx.ui.myAds.MyAdsFragment"
+        android:label="My Ads"
+        tools:layout="@layout/fragment_myads">
+
+        <action
+            android:id="@+id/action_my_ads_to_details"
+            app:destination="@+id/navigation_details"
+            app:popUpTo="@id/navigation_my_ads"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_enter_anim"
+            app:popUpToInclusive="false"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="com.example.olx.ui.details.DetailsFragment"
+        android:label="@string/details"
+        tools:layout="@layout/fragment_details" />
+
 </navigation>

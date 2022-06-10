@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.olx.R
 import com.example.olx.ui.baseFragment
 import com.example.olx.databinding.FragmentHomeBinding
 import com.example.olx.model.CategoriesModel
@@ -93,7 +95,9 @@ class HomeFragment : baseFragment(), sellAdapter.ItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        Toast.makeText(context, "Hey "+position, Toast.LENGTH_SHORT).show()
+        val bundle = Bundle()
+        bundle.putString(Constants.KEY, categoriesModel.get(position).key)
+        findNavController().navigate(R.id.action_home_to_browse, bundle)
     }
 }
 
